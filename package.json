@@ -1,0 +1,12 @@
+{
+  "name": "mydb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "json-server --watch data/db.json --port 3500"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
