@@ -1,179 +1,222 @@
-{
-    "CategoriaActivo": [
+{   
+    "assets":[
         {
-            "id": 1,
-            "nombre": "Juegos"
-        },
-        {
-            "id": 2,
-            "nombre": "Electrodomésticos"
-        },
-        {
-            "id": 3,
-            "nombre": "Mobiliario"
-        },
-        {
-            "id": 4,
-            "nombre": "Dispositivos"
-        },
-        {
-            "id": 5,
-            "nombre": "Equipos de cómputo"
+            "id":0,
+            "categoryId" : 1
         }
     ],
-    "Marcas": [
+    "categories": [
         {
             "id": 1,
-            "nombre": ""
+            "name": "Juegos"
         },
         {
             "id": 2,
-            "nombre": "Kalley"
+            "name": "Electrodomésticos"
         },
         {
             "id": 3,
-            "nombre": "Haceb"
+            "name": "Mobiliario"
         },
         {
             "id": 4,
-            "nombre": "Whirlpool"
+            "name": "Dispositivos"
         },
         {
             "id": 5,
-            "nombre": "Challenger"
+            "name": "Equipos de cómputo"
+        }
+    ],
+    "brands": [
+        {
+            "id": 1,
+            "name": ""
+        },
+        {
+            "id": 2,
+            "name": "Kalley"
+        },
+        {
+            "id": 3,
+            "name": "Haceb"
+        },
+        {
+            "id": 4,
+            "name": "Whirlpool"
+        },
+        {
+            "id": 5,
+            "name": "Challenger"
         },
         {
             "id": 6,
-            "nombre": "LG"
+            "name": "LG"
         },
         {
             "id": 7,
-            "nombre": "TCL"
+            "name": "TCL"
         },
         {
             "id": 8,
-            "nombre": "Epson"
+            "name": "Epson"
         },
         {
             "id": 9,
-            "nombre": "Midea"
+            "name": "Midea"
         },
         {
             "id": 10,
-            "nombre": "Compumax"
+            "name": "Compumax"
         },
         {
             "id": 11,
-            "nombre": "Sony"
+            "name": "Sony"
         },
         {
             "id": 12,
-            "nombre": "Mac"
+            "name": "Mac"
         },
         {
             "id": 13,
-            "nombre": "Samsung"
+            "name": "Samsung"
         },
         {
             "id": 14,
-            "nombre": "HP"
+            "name": "HP"
         },
         {
             "id": 15,
-            "nombre": "Lenovo"
+            "name": "Lenovo"
         },
         {
             "id": 16,
-            "nombre": "Trust"
+            "name": "Trust"
         }
     ],
-    "TipoPersona": [
+    "personTypes": [
         {
             "id": 1,
-            "nombre": "Natural"
+            "name": "Natural"
         },
         {
             "id": 2,
-            "nombre": "Jurídica"
+            "name": "Jurídica"
         }
     ],
-    "tipoMovAct": [],
-    "historialActivo": [],
-    "Proveedor": [
+    "assetMovTypes": [
+
+    ],
+    "assetHistory": [
+
+    ],
+    "suppliers": [
         {
             "id": 900868271,
-            "nombre": "Decathlon Colombia Sas",
+            "name": "Decathlon Colombia Sas",
             "email": "decaUwu@gmail.com"
         },
         {
             "id": 63298800,
-            "nombre": "Tilcia Diaz",
+            "name": "Tilcia Diaz",
             "email": "tilciaUwU@gmail.com"
         },
         {
             "id": 80210045,
-            "nombre": "Yeminix",
+            "name": "Yeminix",
             "email": "yemiUwU@gmail.com"
         },
         {
             "id": 91275056,
-            "nombre": "Edgar Giovanni Gelves Parada",
+            "name": "Edgar Giovanni Gelves Parada",
             "email": "edagarUwU@gmail.com"
         },
         {
             "id": 800242106,
-            "nombre": "Sodimac Colombia Sa",
-            "email": ""
+            "name": "Sodimac Colombia Sa",
+            "email": "sodimacUwU@gmail.com"
         },
         {
             "id": 804005914,
-            "nombre": "Compumax Computer",
+            "name": "Compumax Computer",
             "email": "compumaxUwU@gmail.com"
         },
         {
             "id": 890900943,
-            "nombre": "Colombiana De Comercio",
+            "name": "Colombiana De Comercio",
             "email": "colombianaUwU@gmail.com"
         },
         {
             "id": 900155107,
-            "nombre": "Cencosud Colombia Sa",
+            "name": "Cencosud Colombia Sa",
             "email": "cencosudUwU@gmail.com"
         },
         {
             "id": 900978134,
-            "nombre": "Simaro Colombia Sas",
+            "name": "Simaro Colombia Sas",
             "email": "simaroUwU@gmail.com"
         },
         {
             "id": 901057995,
-            "nombre": "Di+Seña Soluciones Arquitectonicas Sas",
+            "name": "Di+Seña Soluciones Arquitectonicas Sas",
             "email": "di+senaUwU@gmail.com"
         },
         {
             "id": 901450902,
-            "nombre": "Tecnomarketink La 33 Sas",
+            "name": "Tecnomarketink La 33 Sas",
             "email": "tecnoUwU@gmail.com"
         },
         {
             "id": 1005161164,
-            "nombre": "Kevin Leon Parra",
+            "name": "Kevin Leon Parra",
             "email": "kevinUwU@gmail.com"
         },
         {
             "id": 1098657764,
-            "nombre": "Duver Andres Contreras Ramirez",
+            "name": "Duver Andres Contreras Ramirez",
             "email": "duverUwU@gmail.com"
         },
         {
             "id": 1098675074,
-            "nombre": "Yuly Katerine Monsalve",
+            "name": "Yuly Katerine Monsalve",
             "email": "yulyUwU@gmail.com"
         },
         {
             "id": 1098740615,
-            "nombre": "Daniel Avila Martinez",
+            "name": "Daniel Avila Martinez",
             "email": "danielUwU@gmail.com"
         }
+    ],
+    "status":[
+        {
+            "id":0,
+            "name": "No asignado"
+        },
+        {
+            "id":1,
+            "name": "Asignado"
+        },
+        {
+            "id":2,
+            "name": "Dado de bajo por daño"
+        },
+        {
+            "id":3,
+            "name": "En reparacion y/o Garantia"
+        }
+    ],
+    "personPhones":[
+
+    ],
+    "assignments":[
+
+    ],
+    "assetTypes":[
+
+    ],
+    "assignedPeople":[
+
+    ],
+    "movsDetails":[
+
     ]
 }
