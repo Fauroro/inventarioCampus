@@ -1,29 +1,179 @@
 {
-  "posts": [
-    {
-      "id": "1",
-      "title": "a title",
-      "views": 100
-    },
-    {
-      "id": "2",
-      "title": "another title",
-      "views": 200
-    }
-  ],
-  "comments": [
-    {
-      "id": "1",
-      "text": "a comment about post 1",
-      "postId": "1"
-    },
-    {
-      "id": "2",
-      "text": "another comment about post 1",
-      "postId": "1"
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+    "CategoriaActivo": [
+        {
+            "id": 1,
+            "nombre": "Juegos"
+        },
+        {
+            "id": 2,
+            "nombre": "Electrodomésticos"
+        },
+        {
+            "id": 3,
+            "nombre": "Mobiliario"
+        },
+        {
+            "id": 4,
+            "nombre": "Dispositivos"
+        },
+        {
+            "id": 5,
+            "nombre": "Equipos de cómputo"
+        }
+    ],
+    "Marcas": [
+        {
+            "id": 1,
+            "nombre": ""
+        },
+        {
+            "id": 2,
+            "nombre": "Kalley"
+        },
+        {
+            "id": 3,
+            "nombre": "Haceb"
+        },
+        {
+            "id": 4,
+            "nombre": "Whirlpool"
+        },
+        {
+            "id": 5,
+            "nombre": "Challenger"
+        },
+        {
+            "id": 6,
+            "nombre": "LG"
+        },
+        {
+            "id": 7,
+            "nombre": "TCL"
+        },
+        {
+            "id": 8,
+            "nombre": "Epson"
+        },
+        {
+            "id": 9,
+            "nombre": "Midea"
+        },
+        {
+            "id": 10,
+            "nombre": "Compumax"
+        },
+        {
+            "id": 11,
+            "nombre": "Sony"
+        },
+        {
+            "id": 12,
+            "nombre": "Mac"
+        },
+        {
+            "id": 13,
+            "nombre": "Samsung"
+        },
+        {
+            "id": 14,
+            "nombre": "HP"
+        },
+        {
+            "id": 15,
+            "nombre": "Lenovo"
+        },
+        {
+            "id": 16,
+            "nombre": "Trust"
+        }
+    ],
+    "TipoPersona": [
+        {
+            "id": 1,
+            "nombre": "Natural"
+        },
+        {
+            "id": 2,
+            "nombre": "Jurídica"
+        }
+    ],
+    "tipoMovAct": [],
+    "historialActivo": [],
+    "Proveedor": [
+        {
+            "id": 900868271,
+            "nombre": "Decathlon Colombia Sas",
+            "email": "decaUwu@gmail.com"
+        },
+        {
+            "id": 63298800,
+            "nombre": "Tilcia Diaz",
+            "email": "tilciaUwU@gmail.com"
+        },
+        {
+            "id": 80210045,
+            "nombre": "Yeminix",
+            "email": "yemiUwU@gmail.com"
+        },
+        {
+            "id": 91275056,
+            "nombre": "Edgar Giovanni Gelves Parada",
+            "email": "edagarUwU@gmail.com"
+        },
+        {
+            "id": 800242106,
+            "nombre": "Sodimac Colombia Sa",
+            "email": ""
+        },
+        {
+            "id": 804005914,
+            "nombre": "Compumax Computer",
+            "email": "compumaxUwU@gmail.com"
+        },
+        {
+            "id": 890900943,
+            "nombre": "Colombiana De Comercio",
+            "email": "colombianaUwU@gmail.com"
+        },
+        {
+            "id": 900155107,
+            "nombre": "Cencosud Colombia Sa",
+            "email": "cencosudUwU@gmail.com"
+        },
+        {
+            "id": 900978134,
+            "nombre": "Simaro Colombia Sas",
+            "email": "simaroUwU@gmail.com"
+        },
+        {
+            "id": 901057995,
+            "nombre": "Di+Seña Soluciones Arquitectonicas Sas",
+            "email": "di+senaUwU@gmail.com"
+        },
+        {
+            "id": 901450902,
+            "nombre": "Tecnomarketink La 33 Sas",
+            "email": "tecnoUwU@gmail.com"
+        },
+        {
+            "id": 1005161164,
+            "nombre": "Kevin Leon Parra",
+            "email": "kevinUwU@gmail.com"
+        },
+        {
+            "id": 1098657764,
+            "nombre": "Duver Andres Contreras Ramirez",
+            "email": "duverUwU@gmail.com"
+        },
+        {
+            "id": 1098675074,
+            "nombre": "Yuly Katerine Monsalve",
+            "email": "yulyUwU@gmail.com"
+        },
+        {
+            "id": 1098740615,
+            "nombre": "Daniel Avila Martinez",
+            "email": "danielUwU@gmail.com"
+        }
+    ]
 }
