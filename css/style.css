@@ -34,7 +34,7 @@ a {
 li {
 	list-style: none;
 }
-	
+
 /* SIDEBAR */
 #sidebar {
 	position: fixed;
@@ -62,6 +62,7 @@ li {
 #sidebar .brand {
 	font-size: 24px;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	height: 64px;
 	font-weight: 700;
