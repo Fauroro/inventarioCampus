@@ -1,17 +1,18 @@
 import './../app/brands/brand.js'
 import { saveData } from './../app/brands/brand.js';
 
+let selectorOptions = document.querySelector(".form-select")
 
 
-document.querySelectorAll('.nav-link').forEach((val, id) => {
+document.querySelectorAll('.nav-link').forEach((val) => {
     val.addEventListener('click', (e) => {
       let data = JSON.parse(e.target.dataset.verocultar);
       let mainContent = document.querySelector('#mainContent');
       mainContent.innerHTML = '';
       switch (data[0]) {
         case 'a':
-          mainContent.innerHTML = "<add-brand></add-brand>";
-          saveData('brands','<add-brand>');
+          mainContent.innerHTML = `<add-${selectorOptions.value}>  </add-${selectorOptions.value}>`;
+          saveData(`${selectorOptions.value}`,`<add-${selectorOptions.value}>`);
           break;
         case 'b':
           mainContent.innerHTML = '<task-to-do></task-to-do>'

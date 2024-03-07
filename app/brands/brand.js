@@ -1,7 +1,7 @@
 import {getTasks} from '../../api/apiFake.js'
 import {postTasks} from '../../api/apiFake.js'
 
-export class AddBrand extends HTMLElement {
+export class AddBrands extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -47,7 +47,7 @@ export class AddBrand extends HTMLElement {
   
   
 }
-customElements.define("add-brand",AddBrand);
+customElements.define("add-brands",AddBrands);
 
 
 export function saveData (ruta,contenido) {
