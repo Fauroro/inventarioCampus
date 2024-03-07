@@ -87,15 +87,7 @@ imgProfile.addEventListener('click', function () {
 	dropdownProfile.classList.toggle('show');
 })
 // MENU
-const allMenu = document.querySelectorAll('main .content-data .head .menu');
-allMenu.forEach(item=> {
-	const icon = item.querySelector('.icon');
-	const menuLink = item.querySelector('.menu-link');
 
-	icon.addEventListener('click', function () {
-		menuLink.classList.toggle('show');
-	})
-})
 window.addEventListener('click', function (e) {
 	if(e.target !== imgProfile) {
 		if(e.target !== dropdownProfile) {
