@@ -1,4 +1,8 @@
 // SIDEBAR DROPDOWN
+import { createOptions } from "./createSelectOptions.js";
+
+createOptions();
+
 const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');
 const sidebar = document.getElementById('sidebar');
 allDropdown.forEach(item=> {
@@ -115,3 +119,4 @@ const allProgress = document.querySelectorAll('main .card .progress');
 allProgress.forEach(item=> {
 	item.style.setProperty('--value', item.dataset.value)
 })
+

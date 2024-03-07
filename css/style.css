@@ -176,19 +176,7 @@ li {
 #sidebar .btn-upgrade:hover {
 	background: var(--dark-blue);
 }
-#sidebar .ads .wrapper p {
-	font-size: 12px;
-	color: var(--dark-grey);
-	text-align: center;
-}
-#sidebar .ads .wrapper p span {
-	font-weight: 700;
-}
 /* SIDEBAR */
-
-
-
-
 
 /* CONTENT */
 #content {
