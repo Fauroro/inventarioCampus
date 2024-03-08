@@ -83,3 +83,19 @@ export class EditBrands extends HTMLElement{
 }
 customElements.define("edit-brands",EditBrands);
 
+export class DeleteBrands extends HTMLElement{
+  constructor() {
+    super();
+    this.render();
+  }
+  render(){
+    this.innerHTML =  /*html*/`
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search Delete" aria-label="Search">
+        <button class="btn btn-outline-success submit" type="submit">Search</button>
+      </form>
+    <add-brands></add-brands>
+    `;
+  }
+}
+customElements.define("delete-brands",DeleteBrands);

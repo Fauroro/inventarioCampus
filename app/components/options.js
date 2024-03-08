@@ -1,5 +1,6 @@
 import {postTasks} from './../../api/apiFake.js'
 import {putTasks} from './../../api/apiFake.js'
+import {delTasks} from './../../api/apiFake.js';
 
 export function saveData (ruta,contenido) {
     const frmRegistro = document.querySelector('#frmDataTask');
@@ -24,3 +25,5 @@ export function editData (ruta,contenido) {
       mainContent.innerHTML = `<${contenido}></${contenido}>`;
     })
   }
+
+
