@@ -94,8 +94,35 @@ export class DeleteBrands extends HTMLElement{
         <input class="form-control me-2" type="search" placeholder="Search Delete" aria-label="Search">
         <button class="btn btn-outline-success submit" type="submit">Search</button>
       </form>
-    <add-brands></add-brands>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control id" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+          <input type="text" class="form-control name" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+        </div>
+      </div>
+    </div>
     `;
+
+    const sumbit = this.getElementsByClassName('submit');
+    sumbit[0].addEventListener('click', async (e) =>{
+      const id = this.querySelector('.me-2').value;
+      let data = await getTasks(`brands/${id}`);
+      if (data===undefined) {
+        alert('No se encuentra ninguna marca con este codigo')
+      } else {
+        const idBrand = this.querySelector('.id');
+        const nameBrand = this.querySelector('.name');
+        idBrand.placeholder = `Id ${data.id}`
+        nameBrand.placeholder = `Nombre ${data.name}`
+        let selectorOptions = document.getElementsByClassName(".form-select")
+        deleteData(`${selectorOptions.value}/${id}`,`<add-${selectorOptions.value}>`);
+      }
+      e.stopImmediatePropagation();
+      e.preventDefault();    
+    })
+
   }
 }
 customElements.define("delete-brands",DeleteBrands);
