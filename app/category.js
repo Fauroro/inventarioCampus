@@ -1,7 +1,7 @@
-import {getTasks} from '../../api/apiFake.js'
-import {postTasks} from '../../api/apiFake.js'
+import {getTasks} from '../api/apiFake.js'
+import {postTasks} from '../api/apiFake.js'
 
-export class AddBrands extends HTMLElement {
+export class AddCategories extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -10,12 +10,12 @@ export class AddBrands extends HTMLElement {
   render() {
     this.innerHTML = /*html*/ `
       <div class="card mt-3">
-        <div class="card-header">Registrar Marcas</div>
+        <div class="card-header">Registrar Categoria Nueva</div>
         <div class="card-body">
           <form id="frmDataTask" class="was-validated">
             <div class="row">
               <div class="col">
-                <label for="brand" class="form-label">Nombre de la marca *</label>
+                <label for="brand" class="form-label">Nombre de la categoria *</label>
                 <input type="text" class="form-control" id="brand" name="name" aria-describedby="" required>
                 <div class="invalid-feedback">* Campo requerido.</div>
               </div>
@@ -41,23 +41,8 @@ export class AddBrands extends HTMLElement {
         btnGuardar.disabled = !llenos
       });
     });
-  }
-  
-  
-  
+  }   
   
 }
-customElements.define("add-brands",AddBrands);
+customElements.define("add-categories",AddCategories);
 
-
-export function saveData (ruta,contenido) {
-  const frmRegistro = document.querySelector('#frmDataTask');
-  document.querySelector('#btnGuardar').addEventListener("click", (e) => {
-    const datos = Object.fromEntries(new FormData(frmRegistro).entries());
-    postTasks(datos,ruta);
-    e.stopImmediatePropagation();
-    e.preventDefault();
-    alert("Datos guardados correctamente")
-    mainContent.innerHTML = `<${contenido}></${contenido}>`;
-  })
-}

@@ -1,5 +1,7 @@
-import './../app/brands/brand.js'
-import { saveData } from './../app/brands/brand.js';
+import '../app/brand.js'
+import '../app/category.js'
+import '../app/suppliers.js'
+import { saveData } from '../app/components/options.js';
 
 let selectorOptions = document.querySelector(".form-select")
 

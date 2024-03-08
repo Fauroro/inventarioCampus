@@ -98,10 +98,6 @@
     {
       "id": "4d2a",
       "name": "prueba"
-    },
-    {
-      "id": "0f1f",
-      "name": "dab"
     }
   ],
   "personTypes": [
@@ -191,6 +187,11 @@
       "id": "1098740615",
       "name": "Daniel Avila Martinez",
       "email": "danielUwU@gmail.com"
+    },
+    {
+      "id": "7a42",
+      "name": "prueba",
+      "email": "prueba@prueba.com"
     }
   ],
   "status": [
