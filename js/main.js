@@ -2,6 +2,7 @@ import '../app/brand.js'
 import '../app/category.js'
 import '../app/suppliers.js'
 import { saveData } from '../app/components/options.js';
+import { editData } from '../app/components/options.js';
 
 let selectorOptions = document.querySelector(".form-select")
 
@@ -13,11 +14,11 @@ document.querySelectorAll('.nav-link').forEach((val) => {
       mainContent.innerHTML = '';
       switch (data[0]) {
         case 'a':
-          mainContent.innerHTML = `<add-${selectorOptions.value}>  </add-${selectorOptions.value}>`;
+          mainContent.innerHTML = `<add-${selectorOptions.value}></add-${selectorOptions.value}>`;
           saveData(`${selectorOptions.value}`,`<add-${selectorOptions.value}>`);
           break;
-        case 'b':
-          mainContent.innerHTML = '<task-to-do></task-to-do>'
+          case 'b':
+            mainContent.innerHTML = `<edit-${selectorOptions.value}></edit-${selectorOptions.value}>`;
           break;
         case 'c':
           mainContent.innerHTML = '<task-done></task-done>'

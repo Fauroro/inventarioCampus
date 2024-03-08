@@ -38,9 +38,8 @@ const postTask = (datos,endpoint) =>{
     })
 
 }
-const putTask = (datos,id) =>{
-
-    fetch(`${URL_API}/tareas/${id}`,
+const putTask = (datos,endpoint) =>{
+    fetch(`${URL_API}/${endpoint}`,
 	{
 		method: "PUT",
 		headers: myHeaders,
