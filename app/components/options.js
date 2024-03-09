@@ -1,6 +1,4 @@
-import {postTasks} from './../../api/apiFake.js'
-import {putTasks} from './../../api/apiFake.js'
-import {delTasks} from './../../api/apiFake.js';
+import {postTasks, putTasks, delTasks} from './../../api/apiFake.js'
 
 export function saveData (ruta,contenido) {
     const frmRegistro = document.querySelector('#frmDataTask');

@@ -1,5 +1,5 @@
-import {getTasks} from '../api/apiFake.js'
-import {postTasks} from '../api/apiFake.js'
+import { getTasks } from '../api/apiFake.js'
+import { postTasks } from '../api/apiFake.js'
 import { editData, saveData, delData } from './components/options.js';
 
 export class AddBrands extends HTMLElement {
@@ -36,26 +36,26 @@ export class AddBrands extends HTMLElement {
 
     const formInputs = frmRegistro.querySelectorAll('input');
 
-    formInputs.forEach(input =>{
-      input.addEventListener('input', () =>{
-        const llenos = Array.from(formInputs).every(input =>input.value.trim()!=='');
+    formInputs.forEach(input => {
+      input.addEventListener('input', () => {
+        const llenos = Array.from(formInputs).every(input => input.value.trim() !== '');
         btnGuardar.disabled = !llenos
       });
     });
   }
-  
+
 }
-customElements.define("add-brands",AddBrands);
+customElements.define("add-brands", AddBrands);
 
 
-export class EditBrands extends HTMLElement{
-  constructor () {
+export class EditBrands extends HTMLElement {
+  constructor() {
     super();
     this.render();
     // this.editData();
   }
 
-  render(){
+  render() {
     this.innerHTML = /*html*/`
     <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -64,31 +64,31 @@ export class EditBrands extends HTMLElement{
     <add-brands></add-brands>
     `;
     const sumbit = this.getElementsByClassName('submit');
-    sumbit[0].addEventListener('click', async (e) =>{
+    sumbit[0].addEventListener('click', async (e) => {
       const id = this.querySelector('.me-2').value;
       let data = await getTasks(`brands/${id}`);
-      if (data===undefined) {
+      if (data === undefined) {
         alert('No se encuentra ninguna marca con este codigo')
       } else {
         const text = this.getElementsByClassName('brand');
         text[0].value = `${data.name}`;
         let selectorOptions = document.querySelector(".form-select")
-        editData(`${selectorOptions.value}/${id}`,`edit-${selectorOptions.value}`);
+        editData(`${selectorOptions.value}/${id}`, `edit-${selectorOptions.value}`);
       }
       e.stopImmediatePropagation();
-      e.preventDefault();    
+      e.preventDefault();
     })
   }
 
 }
-customElements.define("edit-brands",EditBrands);
+customElements.define("edit-brands", EditBrands);
 
-export class DeleteBrands extends HTMLElement{
+export class DeleteBrands extends HTMLElement {
   constructor() {
     super();
     this.render();
   }
-  render(){
+  render() {
     this.innerHTML =  /*html*/`
     <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search Delete" aria-label="Search">
@@ -106,11 +106,11 @@ export class DeleteBrands extends HTMLElement{
     `;
 
     const sumbit = this.getElementsByClassName('submit');
-    sumbit[0].addEventListener('click', async (e) =>{
+    sumbit[0].addEventListener('click', async (e) => {
       debugger
       const id = this.querySelector('.me-2').value;
       let data = await getTasks(`brands/${id}`);
-      if (data===undefined) {
+      if (data === undefined) {
         alert('No se encuentra ninguna marca con este codigo')
       } else {
         const idBrand = this.querySelector('.id');
@@ -118,12 +118,88 @@ export class DeleteBrands extends HTMLElement{
         idBrand.placeholder = `Id: ${data.id}`
         nameBrand.placeholder = `Nombre: ${data.name}`
         let selectorOptions = document.querySelector(".form-select")
-        delData(`${selectorOptions.value}/${data.id}`,`delete-${selectorOptions.value}`);
+        delData(`${selectorOptions.value}/${data.id}`, `delete-${selectorOptions.value}`);
       }
       e.stopImmediatePropagation();
-      e.preventDefault();    
+      e.preventDefault();
     })
-
   }
 }
-customElements.define("delete-brands",DeleteBrands);
+customElements.define("delete-brands", DeleteBrands);
+
+export class SearchBrands extends HTMLElement {
+  constructor() {
+    super();
+    this.render();
+  }
+  render() {
+    this.innerHTML =  /*html*/`
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success submit" type="submit">Search</button>
+      </form>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control id" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+          <input type="text" class="form-control name" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Description</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Id</label>
+            <input disabled type="text" class="form-control" id="recipient-id">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Name:</label>
+            <input disabled type="text" class="form-control" id="recipient-name">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    `;
+    const sumbit = this.getElementsByClassName('submit');
+    const recipientId = this.querySelector("#recipient-id");
+    const recipientName = this.querySelector("#recipient-name");
+    sumbit[0].addEventListener('click', async (e) => {
+      const id = this.querySelector('.me-2').value;
+      let data = await getTasks(`brands/${id}`);
+      if (data === undefined) {
+        alert('No se encuentra ninguna marca con este codigo')
+      } else {
+        const idBrand = this.querySelector('.id');
+        const nameBrand = this.querySelector('.name');
+        recipientId.placeholder = data.id;
+        recipientName.placeholder = data.name;
+        idBrand.placeholder = `Id: ${data.id}`;
+        nameBrand.placeholder = `Nombre: ${data.name}`
+      }
+      e.stopImmediatePropagation();
+      e.preventDefault();
+    })
+
+    // let searchButton = this.querySelector(".btn-primary");
+    // searchButton.addEventListener('click', () => {
+    //   this.innerHTML =  /*html*/`
+
+    // `;
+    // })
+  }
+}
+customElements.define("search-brands", SearchBrands)

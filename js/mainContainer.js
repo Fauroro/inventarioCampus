@@ -24,7 +24,7 @@ document.querySelectorAll('.nav-link').forEach((val) => {
           mainContent.innerHTML = `<delete-${selectorOptions.value}></delete-${selectorOptions.value}>`;
           break;
         case 'd':
-          mainContent.innerHTML = '<delete-brands></delete-brands>'
+          mainContent.innerHTML = `<search-${selectorOptions.value}></search-${selectorOptions.value}>`;
           break;
         case 'e':
           mainContent.innerHTML = '<task-trash></task-trash>'
