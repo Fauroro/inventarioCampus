@@ -11598,6 +11598,14 @@
       "id": "4d2a"
     }
   ],
+  "persons": [
+    {
+      "id": "234234",
+      "name": "524242",
+      "email": "asdasd",
+      "personType": "Natural"
+    }
+  ],
   "person-types": [
     {
       "id": "1",
@@ -11710,7 +11718,7 @@
       "name": "En reparacion y/o Garantia"
     }
   ],
-  "personPhones": [],
+  "person-phones": [],
   "assignments": [],
   "asset-type": [],
   "assignedPeople": [],

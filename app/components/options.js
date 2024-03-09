@@ -1,31 +1,31 @@
-import {postTasks, putTasks, delTasks,getTasks} from './../../api/apiFake.js'
+import { postTasks, putTasks, delTasks, getTasks } from './../../api/apiFake.js'
 
-export function saveData (ruta,contenido) {
-    const frmRegistro = document.querySelector('#frmDataTask');
-    document.querySelector('#btnGuardar').addEventListener("click", (e) => {
-      const datos = Object.fromEntries(new FormData(frmRegistro).entries());
-      postTasks(datos,ruta);
-      e.stopImmediatePropagation();
-      e.preventDefault();
-      alert("Datos guardados correctamente")
-      mainContent.innerHTML = `<${contenido}></${contenido}>`;
-    })
-  }
+export function saveData(ruta, contenido) {
+  const frmRegistro = document.querySelector('#frmDataTask');
+  document.querySelector('#btnGuardar').addEventListener("click", (e) => {
+    const datos = Object.fromEntries(new FormData(frmRegistro).entries());
+    postTasks(datos, ruta);
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    alert("Datos guardados correctamente")
+    mainContent.innerHTML = `<${contenido}></${contenido}>`;
+  })
+}
 
-export function editData (ruta,contenido) {
-    const frmRegistro = document.querySelector('#frmDataTask');
-    document.querySelector('#btnGuardar').addEventListener("click", (e) => {
-      const datos = Object.fromEntries(new FormData(frmRegistro).entries());
-      putTasks(datos,ruta);
-      e.stopImmediatePropagation();
-      e.preventDefault();
-      alert("Datos modificados correctamente")
-      mainContent.innerHTML = `<${contenido}></${contenido}>`;
-    })
-  }
+export function editData(ruta, contenido) {
+  const frmRegistro = document.querySelector('#frmDataTask');
+  document.querySelector('#btnGuardar').addEventListener("click", (e) => {
+    const datos = Object.fromEntries(new FormData(frmRegistro).entries());
+    putTasks(datos, ruta);
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    alert("Datos modificados correctamente")
+    mainContent.innerHTML = `<${contenido}></${contenido}>`;
+  })
+}
 
-  
-export function delData (ruta,contenido) {
+
+export function delData(ruta, contenido) {
   // const frmRegistro = document.querySelector('#frmDataTask');
   document.querySelector('#button-addon2').addEventListener("click", (e) => {
     // const datos = Object.fromEntries(new FormData(frmRegistro).entries());
@@ -47,10 +47,10 @@ export function buscar(funcion) {
     if (data === undefined) {
       alert('No se encuentran resultados con este codigo')
     } else {
-      const idBrand = document.querySelector('.id');
-      const nameBrand = document.querySelector('.name');
-      idBrand.placeholder = `Id: ${data.id}`
-      nameBrand.placeholder = `Nombre: ${data.name}`
+      const id = document.querySelector('.id');
+      const name = document.querySelector('.name');
+      id.placeholder = `Id: ${data.id}`
+      name.placeholder = `Nombre: ${data.name}`
       if (funcion === 'crearModal') {
         crearModal(data);
       } else if (funcion === 'delData') {

@@ -71,7 +71,7 @@ export class EditBrands extends HTMLElement {
       const id = this.querySelector('.me-2').value;
       let data = await getTasks(`${selectorOptions.value}/${id}`);
       if (data === undefined) {
-        alert('No se encuentra ninguna marca con este codigo')
+        alert('There is no coincidence with this id')
       } else {
         const text = this.getElementsByClassName('brand');
         text[0].value = `${data.name}`;
@@ -93,7 +93,7 @@ export class DeleteBrands extends HTMLElement {
   render() {
     this.innerHTML =  /*html*/`
     <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search Delete" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Search Id number to delete" aria-label="Search">
         <button class="btn btn-outline-success submit" type="submit">Search</button>
       </form>
     <div class="card mt-3">
