@@ -1,6 +1,7 @@
 import '../app/brand.js'
 import '../app/personTypes.js'
-import '../app/suppliers.js'
+import '../app/status.js'
+import '../app/assetType.js'
 import { saveData } from '../app/components/options.js';
 import { editData } from '../app/components/options.js';
 

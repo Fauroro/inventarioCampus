@@ -2,7 +2,7 @@ import { getTasks } from '../api/apiFake.js'
 import { postTasks } from '../api/apiFake.js'
 import { editData, saveData, delData, buscar, crearModal } from './components/options.js';
 
-export class AddPersonTypes extends HTMLElement {
+export class AddStatus extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -12,33 +12,32 @@ export class AddPersonTypes extends HTMLElement {
     <add-brands></add-brands>
     `;
     const cardHeader = this.querySelector('.card-header')
-    cardHeader.textContent = 'Registrar Nuevo tipo de persona'
+    cardHeader.textContent = 'Registrar Nuevo Status'
     const formLabel = this.querySelector('.form-label')
-    formLabel.textContent = 'Nombre del tipo de persona'
+    formLabel.textContent = 'Nombre del Status'
   }
 }
-customElements.define("add-person-types", AddPersonTypes);
+customElements.define("add-status", AddStatus);
 
 
-export class EditPersonTypes extends HTMLElement {
+export class EditStatus extends HTMLElement {
   constructor() {
     super();
     this.render();
-    // this.editData();
   }
   render() {
     this.innerHTML = /*html*/`
     <edit-brands></edit-brands>
     `;
-    const formLabel = this.querySelector('.form-label')
-    formLabel.textContent = 'Nombre del tipo de persona'
     const cardHeader = this.querySelector('.card-header')
-    cardHeader.textContent = 'Editar Tipo de Persona'
+    cardHeader.textContent = 'Editar Status'
+    const formLabel = this.querySelector('.form-label')
+    formLabel.textContent = 'Nombre del Status'
   }
 }
-customElements.define("edit-person-types", EditPersonTypes);
+customElements.define("edit-status", EditStatus);
 
-export class DeletePersonTypes extends HTMLElement {
+export class DeleteStatus extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -49,10 +48,10 @@ export class DeletePersonTypes extends HTMLElement {
     `;
   }
 }
-customElements.define("delete-person-types", DeletePersonTypes);
+customElements.define("delete-status", DeleteStatus);
 
 
-export class SearchPersonTypes extends HTMLElement {
+export class SearchStatus extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -63,4 +62,4 @@ export class SearchPersonTypes extends HTMLElement {
     `;
   }
 }
-customElements.define("search-person-types", SearchPersonTypes)
+customElements.define("search-status", SearchStatus)

@@ -55,7 +55,6 @@ const putTask = (datos,endpoint) =>{
 
 }
 const delTask = (endpoint) =>{
-debugger
     fetch(`${URL_API}/${endpoint}`,
 	{
 		method: "DELETE",

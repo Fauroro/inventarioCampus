@@ -66,15 +66,15 @@ export class EditBrands extends HTMLElement {
     const cardHeader = this.querySelector('.card-header')
     cardHeader.textContent = 'Editar Marcas'
     const sumbit = this.getElementsByClassName('submit');
+    let selectorOptions = document.querySelector(".form-select")
     sumbit[0].addEventListener('click', async (e) => {
       const id = this.querySelector('.me-2').value;
-      let data = await getTasks(`brands/${id}`);
+      let data = await getTasks(`${selectorOptions.value}/${id}`);
       if (data === undefined) {
         alert('No se encuentra ninguna marca con este codigo')
       } else {
         const text = this.getElementsByClassName('brand');
         text[0].value = `${data.name}`;
-        let selectorOptions = document.querySelector(".form-select")
         editData(`${selectorOptions.value}/${id}`, `edit-${selectorOptions.value}`);
       }
       e.stopImmediatePropagation();
