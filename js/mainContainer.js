@@ -15,7 +15,7 @@ document.querySelectorAll('.nav-link').forEach((val) => {
       switch (data[0]) {
         case 'a':
           mainContent.innerHTML = `<add-${selectorOptions.value}></add-${selectorOptions.value}>`;
-          saveData(`${selectorOptions.value}`,`<add-${selectorOptions.value}>`);
+          saveData(`${selectorOptions.value}`,`add-${selectorOptions.value}`);
           break;
           case 'b':
             mainContent.innerHTML = `<edit-${selectorOptions.value}></edit-${selectorOptions.value}>`;

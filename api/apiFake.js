@@ -54,13 +54,13 @@ const putTask = (datos,endpoint) =>{
     })
 
 }
-const delTask = (datos,id) =>{
-
-    fetch(`${URL_API}/tareas/${id}`,
+const delTask = (endpoint) =>{
+debugger
+    fetch(`${URL_API}/${endpoint}`,
 	{
 		method: "DELETE",
 		headers: myHeaders,
-		body:JSON.stringify(datos)
+		// body:JSON.stringify(datos)
 	}
     ).then(res=>{
         return res.json()

@@ -26,4 +26,21 @@ export function editData (ruta,contenido) {
     })
   }
 
+  
+export function delData (ruta,contenido) {
+  // const frmRegistro = document.querySelector('#frmDataTask');
+  document.querySelector('#button-addon2').addEventListener("click", (e) => {
+    debugger
+    // const datos = Object.fromEntries(new FormData(frmRegistro).entries());
+    delTasks(ruta);
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    alert("Datos eliminados correctamente")
+    mainContent.innerHTML = `<${contenido}></${contenido}>`;
+  })
+}
+
+
+
+
 
