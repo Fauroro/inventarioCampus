@@ -1,5 +1,5 @@
 import '../app/brand.js'
-import '../app/category.js'
+import '../app/personTypes.js'
 import '../app/suppliers.js'
 import { saveData } from '../app/components/options.js';
 import { editData } from '../app/components/options.js';

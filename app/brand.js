@@ -1,6 +1,6 @@
 import { getTasks } from '../api/apiFake.js'
 import { postTasks } from '../api/apiFake.js'
-import { editData, saveData, delData } from './components/options.js';
+import { editData, saveData, delData, buscar, crearModal } from './components/options.js';
 
 export class AddBrands extends HTMLElement {
   constructor() {
@@ -63,6 +63,8 @@ export class EditBrands extends HTMLElement {
       </form>
     <add-brands></add-brands>
     `;
+    const cardHeader = this.querySelector('.card-header')
+    cardHeader.textContent = 'Editar Marcas'
     const sumbit = this.getElementsByClassName('submit');
     sumbit[0].addEventListener('click', async (e) => {
       const id = this.querySelector('.me-2').value;
@@ -97,32 +99,14 @@ export class DeleteBrands extends HTMLElement {
     <div class="card mt-3">
       <div class="card-body">
         <div class="input-group mb-3">
-          <input type="text" class="form-control id" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
-          <input type="text" class="form-control name" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class='bx bxs-trash'></i></button>
+          <input type="text" class="form-control id" placeholder="Id:" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+          <input type="text" class="form-control name" placeholder="Nombre:" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+          <button class="btn btn-outline-danger" type="button" id="button-addon2"><i class='bx bxs-trash'></i></button>
         </div>
       </div>
     </div>
     `;
-
-    const sumbit = this.getElementsByClassName('submit');
-    sumbit[0].addEventListener('click', async (e) => {
-      debugger
-      const id = this.querySelector('.me-2').value;
-      let data = await getTasks(`brands/${id}`);
-      if (data === undefined) {
-        alert('No se encuentra ninguna marca con este codigo')
-      } else {
-        const idBrand = this.querySelector('.id');
-        const nameBrand = this.querySelector('.name');
-        idBrand.placeholder = `Id: ${data.id}`
-        nameBrand.placeholder = `Nombre: ${data.name}`
-        let selectorOptions = document.querySelector(".form-select")
-        delData(`${selectorOptions.value}/${data.id}`, `delete-${selectorOptions.value}`);
-      }
-      e.stopImmediatePropagation();
-      e.preventDefault();
-    })
+    buscar('delData');
   }
 }
 customElements.define("delete-brands", DeleteBrands);
@@ -135,71 +119,34 @@ export class SearchBrands extends HTMLElement {
   render() {
     this.innerHTML =  /*html*/`
     <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success submit" type="submit">Search</button>
-      </form>
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success submit" type="submit">Search</button>
+    </form>
     <div class="card mt-3">
       <div class="card-body">
         <div class="input-group mb-3">
-          <input type="text" class="form-control id" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
-          <input type="text" class="form-control name" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+          <input type="text" class="form-control id" placeholder="Id:" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+          <input type="text" class="form-control name" placeholder="Nombre:" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</button>
         </div>
       </div>
     </div>
-
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Description</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Id</label>
-            <input disabled type="text" class="form-control" id="recipient-id">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Description</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Name:</label>
-            <input disabled type="text" class="form-control" id="recipient-name">
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
-  </div>
-</div>
     `;
-    const sumbit = this.getElementsByClassName('submit');
-    const recipientId = this.querySelector("#recipient-id");
-    const recipientName = this.querySelector("#recipient-name");
-    sumbit[0].addEventListener('click', async (e) => {
-      const id = this.querySelector('.me-2').value;
-      let data = await getTasks(`brands/${id}`);
-      if (data === undefined) {
-        alert('No se encuentra ninguna marca con este codigo')
-      } else {
-        const idBrand = this.querySelector('.id');
-        const nameBrand = this.querySelector('.name');
-        recipientId.placeholder = data.id;
-        recipientName.placeholder = data.name;
-        idBrand.placeholder = `Id: ${data.id}`;
-        nameBrand.placeholder = `Nombre: ${data.name}`
-      }
-      e.stopImmediatePropagation();
-      e.preventDefault();
-    })
-
-    // let searchButton = this.querySelector(".btn-primary");
-    // searchButton.addEventListener('click', () => {
-    //   this.innerHTML =  /*html*/`
-
-    // `;
-    // })
+    buscar('crearModal');
   }
 }
 customElements.define("search-brands", SearchBrands)
