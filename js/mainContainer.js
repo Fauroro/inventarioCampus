@@ -30,7 +30,10 @@ document.querySelectorAll('.nav-link').forEach((val) => {
         mainContent.innerHTML = `<search-${selectorOptions.value}></search-${selectorOptions.value}>`;
         break;
       case 'e':
-        mainContent.innerHTML = '<task-trash></task-trash>'
+        break;
+      case 'f':
+        break;
+      case 'g':
         break;
     }
   })
