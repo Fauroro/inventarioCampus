@@ -12621,7 +12621,24 @@
       "name": "prueba"
     }
   ],
-  "person-phones": [],
+  "person-phones": [
+    {
+      "phoneNumber": "666",
+      "location": "Seks",
+      "id": "9cc8"
+    },
+    {
+      "phoneNumber": "475787",
+      "location": "Office",
+      "id": "eeb2"
+    },
+    {
+      "phoneNumber": "12",
+      "location": "xDD",
+      "id": "2a1f",
+      "personId": "1212"
+    }
+  ],
   "assignments": [],
   "asset-types": [
     {

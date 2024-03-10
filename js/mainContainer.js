@@ -1,5 +1,5 @@
 import '../app/brand.js'
-import '../app/personTypes.js'
+import '../app/personPhones.js'
 import '../app/status.js'
 import '../app/assetType.js'
 import '../app/person.js'

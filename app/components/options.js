@@ -2,8 +2,16 @@ import { postTasks, putTasks, delTasks, getTasks } from './../../api/apiFake.js'
 
 export function saveData(ruta, contenido) {
   const frmRegistro = document.querySelector('#frmDataTask');
-  document.querySelector('#btnGuardar').addEventListener("click", (e) => {
+
+  document.querySelector('#btnGuardar').addEventListener("click", async (e) => {
     const datos = Object.fromEntries(new FormData(frmRegistro).entries());
+    if (frmRegistro[0].name === "personId") {
+      let data = await getTasks(`persons/${frmRegistro[0].value}`);
+      if (data == undefined) {
+        alert("This Id doesn't match a registered person")
+        return
+      }
+    }
     const selectElements = frmRegistro.querySelectorAll('select');
     if (selectElements) {
       selectElements.forEach(select => {
@@ -18,15 +26,27 @@ export function saveData(ruta, contenido) {
   })
 }
 
+// const checkPersonId = async (id) => {
+//   let data = await getTasks(`persons/${id}`);
+//   return data
+// }
+
 export function editData(ruta, contenido) {
   const frmRegistro = document.querySelector('#frmDataTask');
   document.querySelector('#btnGuardar').addEventListener("click", (e) => {
+    debugger
     const datos = Object.fromEntries(new FormData(frmRegistro).entries());
     const selectElements = frmRegistro.querySelectorAll('select');
     if (selectElements) {
       selectElements.forEach(select => {
         datos[select.name] = select.value;
       });
+    }
+    const disabledInput = frmRegistro.querySelectorAll('input[disabled]');
+    if (disabledInput) {
+      disabledInput.forEach(disabled => {
+        datos[disabled.name] = disabled.value
+      })
     }
     putTasks(datos, ruta);
     e.stopImmediatePropagation();
@@ -52,7 +72,6 @@ export function buscar(funcion, withStatus = false) {
   const sumbit = document.getElementsByClassName('submit');
   let selectorOptions = document.querySelector(".form-select");
   sumbit[0].addEventListener('click', async (e) => {
-    debugger
     const idValue = document.querySelector('.me-2').value;
     let data = await getTasks(`${selectorOptions.value}/${idValue}`);
     if (data === undefined) {
