@@ -4,6 +4,12 @@ export function saveData(ruta, contenido) {
   const frmRegistro = document.querySelector('#frmDataTask');
   document.querySelector('#btnGuardar').addEventListener("click", (e) => {
     const datos = Object.fromEntries(new FormData(frmRegistro).entries());
+    const selectElements = frmRegistro.querySelectorAll('select');
+    if (selectElements) {
+      selectElements.forEach(select => {
+        datos[select.name] = select.value;
+      });
+    }
     postTasks(datos, ruta);
     e.stopImmediatePropagation();
     e.preventDefault();
@@ -16,6 +22,12 @@ export function editData(ruta, contenido) {
   const frmRegistro = document.querySelector('#frmDataTask');
   document.querySelector('#btnGuardar').addEventListener("click", (e) => {
     const datos = Object.fromEntries(new FormData(frmRegistro).entries());
+    const selectElements = frmRegistro.querySelectorAll('select');
+    if (selectElements) {
+      selectElements.forEach(select => {
+        datos[select.name] = select.value;
+      });
+    }
     putTasks(datos, ruta);
     e.stopImmediatePropagation();
     e.preventDefault();
@@ -26,9 +38,7 @@ export function editData(ruta, contenido) {
 
 
 export function delData(ruta, contenido) {
-  // const frmRegistro = document.querySelector('#frmDataTask');
   document.querySelector('#button-addon2').addEventListener("click", (e) => {
-    // const datos = Object.fromEntries(new FormData(frmRegistro).entries());
     delTasks(ruta);
     e.stopImmediatePropagation();
     e.preventDefault();
@@ -38,23 +48,38 @@ export function delData(ruta, contenido) {
 }
 
 
-export function buscar(funcion) {
+export function buscar(funcion, withStatus = false) {
   const sumbit = document.getElementsByClassName('submit');
-  let selectorOptions = document.querySelector(".form-select")
+  let selectorOptions = document.querySelector(".form-select");
   sumbit[0].addEventListener('click', async (e) => {
-    const id = document.querySelector('.me-2').value;
-    let data = await getTasks(`${selectorOptions.value}/${id}`);
+    debugger
+    const idValue = document.querySelector('.me-2').value;
+    let data = await getTasks(`${selectorOptions.value}/${idValue}`);
     if (data === undefined) {
-      alert('No se encuentran resultados con este codigo')
+      alert('No se encuentran resultados con este codigo');
     } else {
       const id = document.querySelector('.id');
       const name = document.querySelector('.name');
       id.placeholder = `Id: ${data.id}`
       name.placeholder = `Nombre: ${data.name}`
+      const status = document.querySelector('.status');
+      if (withStatus) {
+        let dataEmbed = await getTasks(`${selectorOptions.value}/${idValue}?_embed=statu`);
+        console.log(dataEmbed);
+        status.placeholder = `Status: ${dataEmbed.statu.name}`
+      }
       if (funcion === 'crearModal') {
         crearModal(data);
       } else if (funcion === 'delData') {
-        delData(`${selectorOptions.value}/${data.id}`, `delete-${selectorOptions.value}`);
+        if (withStatus) {
+          if (data.statuId === '2') {
+            delData(`${selectorOptions.value}/${data.id}`, `delete-${selectorOptions.value}`);
+          } else {
+            alert('No es posible eliminar porque no se ha dado de baja')
+          }
+        } else {
+          delData(`${selectorOptions.value}/${data.id}`, `delete-${selectorOptions.value}`);
+        }
       }
     }
     e.stopImmediatePropagation();
@@ -63,15 +88,19 @@ export function buscar(funcion) {
 }
 
 
-export function crearModal(data) {
+export async function crearModal(data) {
   const divModal = document.querySelector('.modal-body')
   divModal.innerHTML = '';
   const form = document.createElement('form')
   form.classList.add('form-modal-body');
-  Object.entries(data).forEach(function ([clave, valor]) {
+  let dataEmbed = [];
+  const id = document.querySelector('.me-2').value;
+
+  for (const [clave, valor] of Object.entries(data)) {
     const div = document.createElement('div');
     const label = document.createElement('label');
     const input = document.createElement('input');
+    const selectorOptions = document.querySelector(".form-select");
 
     div.classList.add('mb-3');
     label.classList.add('col-form-label');
@@ -82,15 +111,30 @@ export function crearModal(data) {
     input.id = 'recipient-name';
     input.disabled = true;
     input.placeholder = valor;
-
+    if (clave.endsWith('Id') && clave !== 'Id') {
+      const response = await getTasks(`${selectorOptions.value}/${id}?_embed=${clave.slice(0, -2)}`);
+      dataEmbed[clave] = response;
+      input.placeholder = dataEmbed[clave][clave.slice(0, -2)].name;
+    } else {
+      input.placeholder = valor;
+    }
     div.appendChild(label);
     div.appendChild(input);
     form.appendChild(div);
 
-  });
+  };
   divModal.appendChild(form);
 
 }
 
-
+export async function crearOpciones(endpoint, selector) {
+  let select = document.querySelector(selector);
+  const optionBrand = await getTasks(endpoint);
+  optionBrand.forEach(opcion => {
+    const newOption = document.createElement('option');
+    newOption.value = opcion.id;
+    newOption.text = opcion.name;
+    select.appendChild(newOption);
+  });
+}
 

@@ -102,6 +102,7 @@ export class EditPerson extends HTMLElement {
                 text[1].value = `${data.name}`;
                 text[2].value = `${data.email}`;
                 selectPersonType.value = `${data.personType}`;
+                btnGuardar.removeAttribute("disabled");
                 editData(`${selectorOptions.value}/${id}`, `edit-${selectorOptions.value}`);
             }
             e.stopImmediatePropagation();

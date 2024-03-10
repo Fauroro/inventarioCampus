@@ -3,6 +3,7 @@ import '../app/personTypes.js'
 import '../app/status.js'
 import '../app/assetType.js'
 import '../app/person.js'
+import '../app/assets.js'
 import { saveData } from '../app/components/options.js';
 import { editData } from '../app/components/options.js';
 

@@ -2,7 +2,7 @@ import { getTasks } from '../api/apiFake.js'
 import { postTasks } from '../api/apiFake.js'
 import { editData, saveData, delData, buscar, crearModal } from './components/options.js';
 
-export class AddAssetType extends HTMLElement {
+export class AddAssetTypes extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -17,10 +17,10 @@ export class AddAssetType extends HTMLElement {
     formLabel.textContent = 'Nombre del Tipo de Activo';
   }
 }
-customElements.define("add-asset-type", AddAssetType);
+customElements.define("add-asset-types", AddAssetTypes);
 
 
-export class EditAssetType extends HTMLElement {
+export class EditAssetTypes extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -35,9 +35,9 @@ export class EditAssetType extends HTMLElement {
     formLabel.textContent = 'Nombre del Tipo de Activo';
   }
 }
-customElements.define("edit-asset-type", EditAssetType);
+customElements.define("edit-asset-types", EditAssetTypes);
 
-export class DeleteAssetType extends HTMLElement {
+export class DeleteAssetTypes extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -48,10 +48,10 @@ export class DeleteAssetType extends HTMLElement {
     `;
   }
 }
-customElements.define("delete-asset-type", DeleteAssetType);
+customElements.define("delete-asset-types", DeleteAssetTypes);
 
 
-export class SearchAssetType extends HTMLElement {
+export class SearchAssetTypes extends HTMLElement {
   constructor() {
     super();
     this.render();
@@ -62,4 +62,4 @@ export class SearchAssetType extends HTMLElement {
     `;
   }
 }
-customElements.define("search-asset-type", SearchAssetType)
+customElements.define("search-asset-types", SearchAssetTypes)
