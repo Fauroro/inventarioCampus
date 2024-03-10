@@ -4,6 +4,7 @@ import '../app/status.js'
 import '../app/assetType.js'
 import '../app/person.js'
 import '../app/assets.js'
+import '../app/createAssignment.js'
 import { saveData } from '../app/components/options.js';
 import { editData } from '../app/components/options.js';
 
@@ -30,6 +31,8 @@ document.querySelectorAll('.nav-link').forEach((val) => {
         mainContent.innerHTML = `<search-${selectorOptions.value}></search-${selectorOptions.value}>`;
         break;
       case 'e':
+        mainContent.innerHTML = `<create-assingment></create-assingment>`;
+        saveData(`assignments`, `create-assingment`);
         break;
       case 'f':
         break;

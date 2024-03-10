@@ -12641,7 +12641,13 @@
       "personId": "1212"
     }
   ],
-  "assignments": [],
+  "assignments": [
+    {
+      "id": "2af4",
+      "responsibleId": "234234",
+      "date": "Sun Mar 10 2024 18:51:27 GMT-0500 (hora estándar de Colombia)"
+    }
+  ],
   "asset-types": [
     {
       "id": "1",

@@ -4,8 +4,9 @@ export function saveData(ruta, contenido) {
   const frmRegistro = document.querySelector('#frmDataTask');
 
   document.querySelector('#btnGuardar').addEventListener("click", async (e) => {
+    debugger
     const datos = Object.fromEntries(new FormData(frmRegistro).entries());
-    if (frmRegistro[0].name === "personId") {
+    if (frmRegistro[0].name === "personId" || frmRegistro[0].name === "responsibleId") {
       let data = await getTasks(`persons/${frmRegistro[0].value}`);
       if (data == undefined) {
         alert("This Id doesn't match a registered person")
@@ -17,6 +18,12 @@ export function saveData(ruta, contenido) {
       selectElements.forEach(select => {
         datos[select.name] = select.value;
       });
+    }
+    const disabledInput = frmRegistro.querySelectorAll('input[disabled]');
+    if (disabledInput) {
+      disabledInput.forEach(disabled => {
+        datos[disabled.name] = disabled.value
+      })
     }
     postTasks(datos, ruta);
     e.stopImmediatePropagation();
