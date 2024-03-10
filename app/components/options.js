@@ -34,7 +34,6 @@ export function saveData(ruta, contenido) {
 export function editData(ruta, contenido) {
   const frmRegistro = document.querySelector('#frmDataTask');
   document.querySelector('#btnGuardar').addEventListener("click", (e) => {
-    debugger
     const datos = Object.fromEntries(new FormData(frmRegistro).entries());
     const selectElements = frmRegistro.querySelectorAll('select');
     if (selectElements) {
@@ -84,8 +83,9 @@ export function buscar(funcion, withStatus = false) {
       const status = document.querySelector('.status');
       if (withStatus) {
         let dataEmbed = await getTasks(`${selectorOptions.value}/${idValue}?_embed=statu`);
-        console.log(dataEmbed);
         status.placeholder = `Status: ${dataEmbed.statu.name}`
+      } if (selectorOptions.value === 'person-phones') {
+        name.placeholder = `phoneNumber: ${data.phoneNumber}`
       }
       if (funcion === 'crearModal') {
         crearModal(data);
@@ -131,9 +131,16 @@ export async function crearModal(data) {
     input.disabled = true;
     input.placeholder = valor;
     if (clave.endsWith('Id') && clave !== 'Id') {
-      const response = await getTasks(`${selectorOptions.value}/${id}?_embed=${clave.slice(0, -2)}`);
-      dataEmbed[clave] = response;
-      input.placeholder = dataEmbed[clave][clave.slice(0, -2)].name;
+      if (selectorOptions.value === 'person-phones') {
+        const response = await getTasks(`persons/${data.personId}`);
+        dataEmbed[clave] = response;
+        input.placeholder = dataEmbed[clave].id;
+      } else {
+        // debugger
+        const response = await getTasks(`${selectorOptions.value}/${id}?_embed=${clave.slice(0, -2)}`);
+        dataEmbed[clave] = response;
+        input.placeholder = dataEmbed[clave][clave.slice(0, -2)].name;
+      }
     } else {
       input.placeholder = valor;
     }

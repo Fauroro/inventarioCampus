@@ -148,6 +148,8 @@ export class DeletePersonPhones extends HTMLElement {
     this.innerHTML =  /*html*/`
     <delete-brands></delete-brands>
     `;
+    const name = this.querySelector('.name')
+    name.placeholder = 'phoneNumber:'
   }
 }
 customElements.define("delete-person-phones", DeletePersonPhones);
@@ -162,6 +164,8 @@ export class SearchPersonPhones extends HTMLElement {
     this.innerHTML =  /*html*/`
     <search-brands></search-brands>
     `;
+    const name = this.querySelector('.name')
+    name.placeholder = 'phoneNumber:'
   }
 }
 customElements.define("search-person-phones", SearchPersonPhones)
