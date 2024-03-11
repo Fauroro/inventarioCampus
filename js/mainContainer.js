@@ -5,8 +5,10 @@ import '../app/assetType.js'
 import '../app/person.js'
 import '../app/assets.js'
 import '../app/createAssignment.js'
+import '../app/assignAssets.js'
 import { saveData } from '../app/components/options.js';
 import { editData } from '../app/components/options.js';
+import { saveDataAssign } from '../app/components/assingOptions.js'
 
 let selectorOptions = document.querySelector(".form-select")
 
@@ -35,6 +37,8 @@ document.querySelectorAll('.nav-link').forEach((val) => {
         saveData(`assignments`, `create-assingment`);
         break;
       case 'f':
+        mainContent.innerHTML = `<assing-assets></assing-assets>`;
+        saveDataAssign(`assignments`, `create-assingment`);
         break;
       case 'g':
         break;

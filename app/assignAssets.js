@@ -1,11 +1,17 @@
+import { buscarAssign } from "./components/assingOptions.js";
 
-export class CreateAssingment extends HTMLElement {
+
+export class AssingAssets extends HTMLElement {
   constructor() {
     super();
     this.render();
   }
   render() {
     this.innerHTML =  /*html*/ `
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search registered person's Id" aria-label="Search">
+        <button class="btn btn-outline-success submit" type="submit">Search</button>
+      </form>
         <div class="card mt-3">
         <div class="card-header">New assignment</div>
         <div class="card-body">
@@ -33,6 +39,9 @@ export class CreateAssingment extends HTMLElement {
         </div>
       </div>
         `;
+
+    buscarAssign();
+
     let inputDate = this.querySelector(".date");
     const date = new Date();
     const agregarCero = (valor) => (valor < 10 ? '0' + valor : valor);
@@ -49,4 +58,4 @@ export class CreateAssingment extends HTMLElement {
     inputDate.value = currentDate;
   }
 }
-customElements.define("create-assingment", CreateAssingment)
+customElements.define("assing-assets", AssingAssets)

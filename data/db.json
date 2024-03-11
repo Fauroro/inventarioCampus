@@ -12497,11 +12497,17 @@
       "id": "4d2a"
     }
   ],
-  "persons": [
+  "personas": [
     {
       "id": "234234",
       "name": "524242",
       "email": "asdasd",
+      "personType": "Natural"
+    },
+    {
+      "id": "123456",
+      "name": "Fauroro",
+      "email": "prueba@prueba.com",
       "personType": "Natural"
     }
   ],
@@ -12626,26 +12632,31 @@
       "phoneNumber": "666",
       "location": "Seks",
       "id": "9cc8",
-      "personId": "234234"
+      "personaId": "234234"
     },
     {
       "phoneNumber": "475787",
       "location": "Office",
       "id": "eeb2",
-      "personId": "234234"
+      "personaId": "234234"
     },
     {
       "phoneNumber": "12",
       "location": "xDD",
       "id": "2a1f",
-      "personId": "1212"
+      "personaId": "1212"
     }
   ],
   "assignments": [
     {
       "id": "2af4",
-      "responsibleId": "234234",
-      "date": "Sun Mar 10 2024 18:51:27 GMT-0500 (hora estándar de Colombia)"
+      "personaId": "12",
+      "date": "10/3/2024 20:10:25"
+    },
+    {
+      "id": "f01b",
+      "personaId": "123456",
+      "date": "10/3/2024 20:33:10"
     }
   ],
   "asset-types": [
@@ -12721,5 +12732,13 @@
     }
   ],
   "assignedPeople": [],
-  "movsDetails": []
+  "mov-details": [
+    {
+      "id":"",
+      "dateMov":"",
+      "assetId":"",
+      "comment":"",
+      "assignmentId":""
+    }
+  ]
 }

@@ -16,7 +16,7 @@ export class AddPersonPhones extends HTMLElement {
                   <div class="row">
                       <div class="col">
                           <label for="brand" class="form-label">Person's Id number </label>
-                          <input type="text" class="form-control brand" id="brand" name="personId" aria-describedby="" required>
+                          <input type="text" class="form-control brand" id="brand" name="personaId" aria-describedby="" required>
                           <div class="invalid-feedback">* Requiered field.</div>
                       </div>
                   </div>
@@ -86,7 +86,7 @@ export class EditPersonPhones extends HTMLElement {
                   <div class="row">
                       <div class="col">
                           <label for="brand" class="form-label">Person Id </label>
-                          <input type="text" class="form-control brand" id="brand" disabled name="personId" aria-describedby="" required>
+                          <input type="text" class="form-control brand" id="brand" disabled name="personaId" aria-describedby="" required>
                           <div class="invalid-feedback">* Requiered field.</div>
                       </div>
                   </div>
@@ -126,7 +126,7 @@ export class EditPersonPhones extends HTMLElement {
         const text = this.getElementsByClassName('brand');
         text[0].value = `${data.id}`;
         text[0].disabled = true;
-        text[1].value = `${data.personId}`;
+        text[1].value = `${data.personaId}`;
         text[2].value = `${data.phoneNumber}`;
         text[3].value = `${data.location}`;
         btnGuardar.removeAttribute("disabled");

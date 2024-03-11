@@ -4,10 +4,9 @@ export function saveData(ruta, contenido) {
   const frmRegistro = document.querySelector('#frmDataTask');
 
   document.querySelector('#btnGuardar').addEventListener("click", async (e) => {
-    debugger
     const datos = Object.fromEntries(new FormData(frmRegistro).entries());
-    if (frmRegistro[0].name === "personId" || frmRegistro[0].name === "responsibleId") {
-      let data = await getTasks(`persons/${frmRegistro[0].value}`);
+    if (frmRegistro[0].name === "personaId" || frmRegistro[0].name === "responsibleId") {
+      let data = await getTasks(`personas/${frmRegistro[0].value}`);
       if (data == undefined) {
         alert("This Id doesn't match a registered person")
         return
@@ -33,8 +32,8 @@ export function saveData(ruta, contenido) {
   })
 }
 
-// const checkPersonId = async (id) => {
-//   let data = await getTasks(`persons/${id}`);
+// const checkPersonaId = async (id) => {
+//   let data = await getTasks(`personas/${id}`);
 //   return data
 // }
 
@@ -139,7 +138,7 @@ export async function crearModal(data) {
     input.placeholder = valor;
     if (clave.endsWith('Id') && clave !== 'Id') {
       if (selectorOptions.value === 'person-phones') {
-        const response = await getTasks(`persons/${data.personId}`);
+        const response = await getTasks(`personas/${data.personaId}`);
         dataEmbed[clave] = response;
         input.placeholder = dataEmbed[clave].id;
       } else {

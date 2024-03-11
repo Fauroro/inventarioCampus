@@ -1,5 +1,5 @@
 let selectOptions = [
-    "assets", "brands", "persons",
+    "assets", "brands", "personas",
     "status", "person-phones", "assetMovTypes",
     "asset-types", "assignedPeople"
 ]

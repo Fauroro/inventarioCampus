@@ -3,7 +3,7 @@ import { postTasks } from '../api/apiFake.js'
 import { editData, saveData, delData, buscar, crearModal } from './components/options.js';
 import { DeleteBrands } from './brand.js';
 
-export class AddPersons extends HTMLElement {
+export class AddPersonas extends HTMLElement {
     constructor() {
         super();
         this.render();
@@ -68,7 +68,7 @@ export class AddPersons extends HTMLElement {
         });
     }
 }
-customElements.define("add-persons", AddPersons);
+customElements.define("add-personas", AddPersonas);
 
 
 export class EditPerson extends HTMLElement {
@@ -83,7 +83,7 @@ export class EditPerson extends HTMLElement {
             <input class="form-control me-2" type="search" placeholder="Id number" aria-label="Search">
             <button class="btn btn-outline-success submit" type="submit">Search</button>
         </form>
-        <add-persons></add-persons>
+        <add-personas></add-personas>
     `;
         const cardHeader = this.querySelector('.card-header')
         cardHeader.textContent = 'Edit Person'
@@ -110,9 +110,9 @@ export class EditPerson extends HTMLElement {
         })
     }
 }
-customElements.define("edit-persons", EditPerson);
+customElements.define("edit-personas", EditPerson);
 
-export class DeletePersons extends HTMLElement {
+export class DeletePersonas extends HTMLElement {
     constructor() {
         super();
         this.render();
@@ -123,10 +123,10 @@ export class DeletePersons extends HTMLElement {
     `;
     }
 }
-customElements.define("delete-persons", DeletePersons);
+customElements.define("delete-personas", DeletePersonas);
 
 
-export class SearchPersons extends HTMLElement {
+export class SearchPersonas extends HTMLElement {
     constructor() {
         super();
         this.render();
@@ -137,4 +137,4 @@ export class SearchPersons extends HTMLElement {
     `;
     }
 }
-customElements.define("search-persons", SearchPersons)
+customElements.define("search-personas", SearchPersonas)
