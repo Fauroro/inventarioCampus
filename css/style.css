@@ -199,7 +199,6 @@ nav .divider {
 		transition: all .3s ease;
 	}
 
-	nav .nav-link,
 	nav .divider {
 		display: none;
 	}

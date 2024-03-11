@@ -1,11 +1,11 @@
 
 export class CreateAssingment extends HTMLElement {
-    constructor() {
-        super();
-        this.render();
-    }
-    render() {
-        this.innerHTML =  /*html*/ `
+  constructor() {
+    super();
+    this.render();
+  }
+  render() {
+    this.innerHTML =  /*html*/ `
         <div class="card mt-3">
         <div class="card-header">New assignment</div>
         <div class="card-body">
@@ -33,9 +33,20 @@ export class CreateAssingment extends HTMLElement {
         </div>
       </div>
         `;
-        const currentDate = new Date();
-        let inputDate = this.querySelector(".date");
-        inputDate.value = currentDate;
-    }
+    let inputDate = this.querySelector(".date");
+    const date = new Date();
+    const agregarCero = (valor) => (valor < 10 ? '0' + valor : valor);
+
+    const dia = date.getDate();
+    const mes = date.getMonth() + 1;
+    const año = date.getFullYear();
+    const hora = agregarCero(date.getHours());
+    const minutos = agregarCero(date.getMinutes());
+    const segundos = agregarCero(date.getSeconds());
+
+    const currentDate = `${dia}/${mes}/${año} ${hora}:${minutos}:${segundos}`;
+
+    inputDate.value = currentDate;
+  }
 }
 customElements.define("create-assingment", CreateAssingment)

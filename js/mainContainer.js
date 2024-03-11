@@ -38,6 +38,16 @@ document.querySelectorAll('.nav-link').forEach((val) => {
         break;
       case 'g':
         break;
+      case 'z':
+        mainContent.innerHTML = /* html */`
+          <div class="container-fluid">
+            <div class="card mt-3">
+              <img
+                src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTFzOHNvNHM0dW5lanN5dHFzMG5kdXBscjZtcXo1ZnczMmV6OHU5cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YP258EkezKv5RSPGRI/giphy.gif"
+                class="img-fluid" alt="..." style="opacity: 0.9;">
+            </div>
+          </div>`
+        break;
     }
   })
 });
