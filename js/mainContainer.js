@@ -6,6 +6,7 @@ import '../app/person.js'
 import '../app/assets.js'
 import '../app/createAssignment.js'
 import '../app/assignAssets.js'
+import '../app/returnAsset.js'
 import { saveData } from '../app/components/options.js';
 import { editData } from '../app/components/options.js';
 import { saveDataAssign } from '../app/components/assingOptions.js'
@@ -41,6 +42,8 @@ document.querySelectorAll('.nav-link').forEach((val) => {
         saveDataAssign(`assignments`, `create-assingment`);
         break;
       case 'g':
+        mainContent.innerHTML = `<return-assets></return-assets>`;
+        break;
         break;
       case 'z':
         mainContent.innerHTML = /* html */`
