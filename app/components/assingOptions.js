@@ -1,21 +1,24 @@
 import { postTasks, putTasks, delTasks, getTasks } from './../../api/apiFake.js'
 
-export function saveDataAssign(ruta, contenido) {
+export function saveDataAssign(ruta, contenido, assignmentId) {
   const frmRegistro = document.querySelector('#frmDataTask');
   document.querySelector('#btnGuardar').addEventListener("click", async (e) => {
-    // const datos = Object.fromEntries(new FormData(frmRegistro).entries());
-    // if (frmRegistro[0].name === "personaId" || frmRegistro[0].name === "personaId") {
-    //   let data = await getTasks(`personas/${frmRegistro[0].value}`);
-    //   let dataAssign = await getTasks(`assignments`);
-    //   if (data == undefined) {
-    //     alert("This Id doesn't match a registered person")
-    //     return
-    //   }
-    // if (condition = dataAssign.some(item => item.personaId === personaId )) {
-    //     console.log('holi');
-    //   }
-    // }
+    const datos = Object.fromEntries(new FormData(frmRegistro).entries());
     const selectElements = frmRegistro.querySelectorAll('select');
+    // let assetId = document.querySelector("#assetId").value;
+    let dataAsset; 
+    dataAsset = await getTasks(`assets/${datos.assetId}`);
+    debugger
+    if (dataAsset == undefined) {
+      alert("No existe este activo")
+      return
+    }
+    if (dataAsset.statuId !== "0") {
+      const statusEmbed = await getTasks(`assets/${datos.assetId}?_embed=statu`);
+      const nameStatus = statusEmbed.statu.name;
+      alert(`Activo se encuentra en estado: ${nameStatus}, no es posible asignarlo`)
+      return
+    }
     if (selectElements) {
       selectElements.forEach(select => {
         datos[select.name] = select.value;
@@ -27,7 +30,8 @@ export function saveDataAssign(ruta, contenido) {
         datos[disabled.name] = disabled.value
       })
     }
-    // postTasks(datos, ruta);
+    datos['assignmentId'] = assignmentId;
+    postTasks(datos, ruta);
     e.stopImmediatePropagation();
     e.preventDefault();
     alert("Datos guardados correctamente")
@@ -76,32 +80,87 @@ export function saveDataAssign(ruta, contenido) {
 // }
 
 
-export function buscarAssign(funcion, withStatus = false) {
+export function buscarAssign() {
   const sumbit = document.getElementsByClassName('submit');
-  let selectorOptions = document.querySelector(".form-select");
   sumbit[0].addEventListener('click', async (e) => {
-    debugger
     const idValue = document.querySelector('.me-2').value;
-    // const datos = Object.fromEntries(new FormData(frmRegistro).entries());
-    // if (frmRegistro[0].name === "personaId" || frmRegistro[0].name === "personaId") {
-    let data = await getTasks(`personas/${idValue}`);
-    let dataAssign = await getTasks(`assignments`);
-    let dataMov = await getTasks(`mov-details`);
+    const data = await getTasks(`personas/${idValue}`);
+    const dataAssign = await getTasks(`assignments`);
+    const dataMov = await getTasks(`mov-details`);
     if (data == undefined) {
       alert("This Id doesn't match a registered person")
       return
     }
     let condition;
     if (condition = dataAssign.some(item => item.personaId === idValue)) {
-      console.log('holi');
       if (condition = dataMov.some(item => item.personaId === idValue)) {
         alert('No hay asignaciones libres para la persona')
       } else {
-        // inserte codigo de generacion XD
-        console.log('holiwas');
+        const content = document.querySelector('.formulario')
+        content.innerHTML = /* html */`
+        <div class="card-header">New assignment</div>
+        <div class="card-body">
+          <form id="frmDataTask" class="was-validated">
+            <div class="row">
+              <div class="col">
+                <label for="brand" class="form-label">Date</label>
+                <input type="text" disabled placeholder="Introduce a registered person's Id"
+                  class="form-control brand date" id="brand" name="dateMov" aria-describedby="">
+                <div class="invalid-feedback">* Required field.</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="brand" class="form-label">Asset Id</label>
+                <input type="text" required placeholder="Introduce a Asset Id"
+                  class="form-control brand date" id="assetId" name="assetId" aria-describedby="">
+                <div class="invalid-feedback">* Required field.</div>
+              </div>
+            </div>
+            <div class="row" style="height: 15px"></div>
+            <div class="row">
+              <div class="col">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                    style="height: 100px" name="comment"></textarea>
+                  <label for="floatingTextarea2">Comments</label>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="container mt-4 text-center">
+                <button type="button" class="btn btn-primary" id="btnGuardar" data-bs-toggle="button" disabled>Create
+                  assignment</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        `;
+        let inputDate = document.querySelector(".date");
+        let assetId = document.querySelector("#assetId");
+        let btnGuardar = document.querySelector("#btnGuardar");
+        const date = new Date();
+        const agregarCero = (valor) => (valor < 10 ? '0' + valor : valor);
 
+        const dia = date.getDate();
+        const mes = date.getMonth() + 1;
+        const año = date.getFullYear();
+        const hora = agregarCero(date.getHours());
+        const minutos = agregarCero(date.getMinutes());
+        const segundos = agregarCero(date.getSeconds());
+
+        const currentDate = `${dia}/${mes}/${año} ${hora}:${minutos}:${segundos}`;
+
+        inputDate.value = currentDate;
+        content.style.display = 'block';
+
+        assetId.addEventListener('input', () => {
+          if (assetId !== "") {
+            btnGuardar.disabled = false;
+          }
+        })
+        saveDataAssign(`mov-details`, `assing-assets`, idValue)
       }
-
     }
     // }
     // let data = await getTasks(`${selectorOptions.value}/${idValue}`);

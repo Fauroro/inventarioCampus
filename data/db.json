@@ -12734,11 +12734,34 @@
   "assignedPeople": [],
   "mov-details": [
     {
-      "id":"",
-      "dateMov":"",
-      "assetId":"",
-      "comment":"",
-      "assignmentId":""
+      "id": "",
+      "dateMov": "",
+      "assetId": "",
+      "comment": "",
+      "assignmentId": ""
+    },
+    {
+      "id": "0fe4",
+      "assetId": "8f47",
+      "comment": "mensaje de prueba",
+      "dateMov": "11/3/2024 08:39:08",
+      "assignmentId": "123456"
+    },
+    {
+      "id": "50c1",
+      "assetId": "5",
+      "comment": "prueba",
+      "dateMov": "11/3/2024 09:29:37",
+      "assignmentId": "123456"
+    }
+  ],
+  "mov": [
+    {
+      "id": "",
+      "dateMov": "",
+      "assetId": "",
+      "comment": "",
+      "assignmentId": ""
     }
   ]
 }
