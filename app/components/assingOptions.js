@@ -211,7 +211,7 @@ export function buscarAssignModal() {
                       <input type="text" class="form-control id" id="id${clave}" placeholder="Id:" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
                       <input type="text" class="form-control name" id="name${clave}" placeholder="Nombre:" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
                       <input type="text" class="form-control dateMov" id="dateMov${clave}" placeholder="Fecha Asignacion:" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
-                    <button id="${valor.assetId}" type="button" class="btn btn-primary historyButton" data-bs-toggle="modal" data-bs-target="#exampleModal">Boton de prueba modal</button>
+                    <button id="${valor.assetId}" type="button" class="btn btn-primary historyButton" data-bs-toggle="modal" data-bs-target="#exampleModal">Opciones</button>
                     </div>
                   </div>
                 </div>

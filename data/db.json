@@ -614,7 +614,7 @@
       "supplierId": "1098675074",
       "serial": "34IE79842021C170160007",
       "accountableId": "1",
-      "statuId": "0"
+      "statuId": "1"
     },
     {
       "id": "45",
@@ -12513,6 +12513,12 @@
       "name": "Fauroro",
       "email": "prueba@prueba.com",
       "personType": "Natural"
+    },
+    {
+      "id": "777",
+      "name": "James Bond",
+      "email": "james@bond.com",
+      "personType": "Jurídica"
     }
   ],
   "person-types": [
@@ -12536,6 +12542,16 @@
         "statuId": "1"
       },
       "id": "d7e1"
+    },
+    {
+      "44": {
+        "id": "627d",
+        "assetId": "44",
+        "dateMov": "12/3/2024 07:37:16",
+        "personaId": "777",
+        "statuId": "1"
+      },
+      "id": "a41e"
     }
   ],
   "suppliers": [
@@ -12672,6 +12688,11 @@
       "id": "f01b",
       "personaId": "123456",
       "date": "10/3/2024 20:33:10"
+    },
+    {
+      "id": "2787",
+      "personaId": "777",
+      "date": "12/3/2024 07:37:06"
     }
   ],
   "asset-types": [
@@ -12768,6 +12789,13 @@
       "comment": "dfh",
       "dateMov": "11/3/2024 12:54:30",
       "assignmentId": "f01b"
+    },
+    {
+      "id": "627d",
+      "assetId": "44",
+      "comment": "adicion",
+      "dateMov": "12/3/2024 07:37:16",
+      "assignmentId": "2787"
     }
   ]
 }

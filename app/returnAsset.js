@@ -43,8 +43,12 @@ export class ReturnAssets extends HTMLElement {
             
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+          <button type="button" id="retornar" class="btn btn-outline-success" data-bs-dismiss="modal">Return Asset</button>
+          <button type="button" id="garantia" class="btn btn-outline-warning" data-bs-dismiss="modal">Enviar a Garantia</button>
+          <button type="button" id="baja" class="btn btn-outline-danger" data-bs-dismiss="modal">Dar de baja</button>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          
+            </div>
         </div>
       </div>
     </div>
@@ -73,55 +77,76 @@ export class ReturnAssets extends HTMLElement {
         const dataSupplier = await getTasks(`assets/${buttonId}?_embed=supplier`);
         modalBody.innerHTML = /* html */`
         <div class="row">
-          <div class="col">
-            <label for="brand" class="form-label">Asset Id </label>
-            <input placeholder="${dataAsset.id}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
-          </div>
+        <div class="col">
+          <label for="brand" class="form-label">Asset Id </label>
+          <input placeholder="${dataAsset.id}" type="text" class="form-control id" name="id" aria-describedby=""
+            disabled>
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="brand" class="form-label">Asset Id </label>
-            <input placeholder="${dataAsset.name}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="brand" class="form-label">Asset Id </label>
+          <input placeholder="${dataAsset.name}" type="text" class="form-control id" name="id" aria-describedby=""
+            disabled>
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="brand" class="form-label">Brand </label>
-            <input placeholder="${dataBrand.brand.name}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="brand" class="form-label">Brand </label>
+          <input placeholder="${dataBrand.brand.name}" type="text" class="form-control id" name="id" aria-describedby=""
+            disabled>
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="brand" class="form-label">Category </label>
-            <input placeholder="${dataCategory.category.name}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="brand" class="form-label">Category </label>
+          <input placeholder="${dataCategory.category.name}" type="text" class="form-control id" name="id"
+            aria-describedby="" disabled>
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="brand" class="form-label">Asset Type </label>
-            <input placeholder="${dataType['asset-type'].name}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="brand" class="form-label">Asset Type </label>
+          <input placeholder="${dataType['asset-type'].name}" type="text" class="form-control id" name="id"
+            aria-describedby="" disabled>
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="brand" class="form-label">Supplier</label>
-            <input placeholder="${dataSupplier.supplier.name}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="brand" class="form-label">Supplier</label>
+          <input placeholder="${dataSupplier.supplier.name}" type="text" class="form-control id" name="id"
+            aria-describedby="" disabled>
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="brand" class="form-label">Unit Value </label>
-            <input placeholder="${dataAsset.unitValue} $" type="text" class="form-control id" name="id" aria-describedby="" disabled>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="brand" class="form-label">Unit Value </label>
+          <input placeholder="${dataAsset.unitValue} $" type="text" class="form-control id" name="id"
+            aria-describedby="" disabled>
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="brand" class="form-label">Serial number </label>
-            <input placeholder="${dataAsset.serial}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="brand" class="form-label">Serial number </label>
+          <input placeholder="${dataAsset.serial}" type="text" class="form-control id" name="id" aria-describedby=""
+            disabled>
         </div>
+      </div>
+
         `;
       }
+      const retornar = document.getElementById('retornar');
+      retornar.addEventListener('click', async (e) => {
+        alert("holi")
+      });
+      const garantia = document.getElementById('garantia');
+      retornar.addEventListener('click', async (e) => {
+        alert("holi")
+      });
+      const baja = document.getElementById('baja');
+      retornar.addEventListener('click', async (e) => {
+        alert("holi")
+      });
     });
   }
 }
