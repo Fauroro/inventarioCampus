@@ -1,5 +1,5 @@
 import { postTasks, putTasks, delTasks, getTasks } from './../../api/apiFake.js'
-export function saveDataAssign(ruta, contenido, personaId,assignmentId) {
+export function saveDataAssign(ruta, contenido, personaId, assignmentId) {
   const frmRegistro = document.querySelector('#frmDataTask');
   document.querySelector('#btnGuardar').addEventListener("click", async (e) => {
     const datos = Object.fromEntries(new FormData(frmRegistro).entries());
@@ -30,7 +30,7 @@ export function saveDataAssign(ruta, contenido, personaId,assignmentId) {
       })
     }
     datos['assignmentId'] = assignmentId;
-    const nuevoId = await postTasks(datos, ruta); 
+    const nuevoId = await postTasks(datos, ruta);
     putTasks(dataAsset, `assets/${datos.assetId}`);
     alert(`Datos guardados correctamente.\n ID generado: ` + nuevoId);
     e.stopImmediatePropagation();
@@ -46,7 +46,7 @@ export function saveDataAssign(ruta, contenido, personaId,assignmentId) {
     debugger
     history[`${datos.assetId}`] = datosHistory;
     console.log(history);
-    const nuevoId2 = await postTasks(history, `assetHistory`); 
+    const nuevoId2 = await postTasks(history, `assetHistory`);
     e.stopImmediatePropagation();
     e.preventDefault();
     alert(`Historial de movimiento guardado con ID generado: ` + nuevoId2);
@@ -188,99 +188,46 @@ export function buscarAssign() {
             btnGuardar.disabled = false;
           }
         })
+
+        const contentExist = document.querySelector('.existente')
+        contentExist.innerHTML = /* html */`
+          <div class="card-header">Assignments</div>
+          `
+        const dataMovDetails = await getTasks(`mov-details`)
+        let idAssign = dataAssign.filter(objeto => objeto.personaId === idValue).map(objeto => objeto.id)
+        console.log(idAssign);
+        for (const valor of idAssign) {
+          let dataMov = dataMovDetails.filter(objeto => objeto.assignmentId === valor)
+          console.log(dataMov);
+          for (const [clave, valor] of Object.entries(dataMov)) {
+            contentExist.innerHTML += /* html */`
+                <div class="card mt-3">
+                  <div class="card-body">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control id" id="id${clave}" placeholder="Id:" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+                      <input type="text" class="form-control name" id="name${clave}" placeholder="Nombre:" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+                      <input type="text" class="form-control dateMov" id="dateMov${clave}" placeholder="Fecha Asignacion:" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
+                      <button class="btn btn-outline-danger" type="button" id="button-addon2" style="display:none"><i class='bx bxs-trash'></i></button>
+                    </div>
+                  </div>
+                </div>
+        `;debugger
+            let id = document.getElementById(`id${clave}`);
+            let name = document.getElementById(`name${clave}`);
+            let fechaMov = document.getElementById(`dateMov${clave}`);            
+            let dataAsset = await getTasks(`assets/${valor.assetId}`);
+            fechaMov.placeholder = `Fecha Asignacion: ${valor.dateMov}`;
+            id.placeholder = `Id: ${valor.assetId}`;
+            name.placeholder = `Name: ${dataAsset.name}`;
+          }
+
+
+        }
         saveDataAssign(`mov-details`, `assing-assets`, idValue, assignmentId)
       }
     }
-    // }
-    // let data = await getTasks(`${selectorOptions.value}/${idValue}`);
-    // if (data === undefined) {
-    //   alert('No se encuentran resultados con este codigo');
-    // } else {
-    //   const id = document.querySelector('.id');
-    //   const name = document.querySelector('.name');
-    //   id.placeholder = `Id: ${data.id}`
-    //   name.placeholder = `Nombre: ${data.name}`
-    //   const status = document.querySelector('.status');
-    //   if (withStatus) {
-    //     let dataEmbed = await getTasks(`${selectorOptions.value}/${idValue}?_embed=statu`);
-    //     status.placeholder = `Status: ${dataEmbed.statu.name}`
-    //   } if (selectorOptions.value === 'person-phones') {
-    //     name.placeholder = `phoneNumber: ${data.phoneNumber}`
-    //   }
-    //   if (funcion === 'crearModal') {
-    //     crearModal(data);
-    //   } else if (funcion === 'delData') {
-    //     if (withStatus) {
-    //       if (data.statuId === '2') {
-    //         delData(`${selectorOptions.value}/${data.id}`, `delete-${selectorOptions.value}`);
-    //       } else {
-    //         alert('No es posible eliminar porque no se ha dado de baja')
-    //       }
-    //     } else {
-    //       delData(`${selectorOptions.value}/${data.id}`, `delete-${selectorOptions.value}`);
-    //     }
-    //   }
     e.stopImmediatePropagation();
     e.preventDefault();
   })
 }
-
-
-
-// export async function crearModal(data) {
-//   const divModal = document.querySelector('.modal-body')
-//   divModal.innerHTML = '';
-//   const form = document.createElement('form')
-//   form.classList.add('form-modal-body');
-//   let dataEmbed = [];
-//   const id = document.querySelector('.me-2').value;
-
-//   for (const [clave, valor] of Object.entries(data)) {
-//     const div = document.createElement('div');
-//     const label = document.createElement('label');
-//     const input = document.createElement('input');
-//     const selectorOptions = document.querySelector(".form-select");
-
-//     div.classList.add('mb-3');
-//     label.classList.add('col-form-label');
-//     label.htmlFor = 'message-text';
-//     label.textContent = clave;
-//     input.type = 'text';
-//     input.classList.add('form-control');
-//     input.id = 'recipient-name';
-//     input.disabled = true;
-//     input.placeholder = valor;
-//     if (clave.endsWith('Id') && clave !== 'Id') {
-//       if (selectorOptions.value === 'person-phones') {
-//         const response = await getTasks(`personas/${data.personaId}`);
-//         dataEmbed[clave] = response;
-//         input.placeholder = dataEmbed[clave].id;
-//       } else {
-//         // debugger
-//         const response = await getTasks(`${selectorOptions.value}/${id}?_embed=${clave.slice(0, -2)}`);
-//         dataEmbed[clave] = response;
-//         input.placeholder = dataEmbed[clave][clave.slice(0, -2)].name;
-//       }
-//     } else {
-//       input.placeholder = valor;
-//     }
-//     div.appendChild(label);
-//     div.appendChild(input);
-//     form.appendChild(div);
-
-//   };
-//   divModal.appendChild(form);
-
-// }
-
-// export async function crearOpciones(endpoint, selector) {
-//   let select = document.querySelector(selector);
-//   const optionBrand = await getTasks(endpoint);
-//   optionBrand.forEach(opcion => {
-//     const newOption = document.createElement('option');
-//     newOption.value = opcion.id;
-//     newOption.text = opcion.name;
-//     select.appendChild(newOption);
-//   });
-// }
 
