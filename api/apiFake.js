@@ -1,4 +1,5 @@
 const URL_API = "http://localhost:3500";
+// const URL_API = "http://154.38.171.54";
 const myHeaders = new Headers({
     "Content-Type": "application/json"
 });
@@ -22,7 +23,6 @@ const getTask = async (endpoint) => {
 
 }
 const postTask = (datos, endpoint) => {
-    debugger
   return new Promise((resolve, reject) => {
     fetch(`${URL_API}/${endpoint}`, {
       method: "POST",

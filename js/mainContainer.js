@@ -44,7 +44,6 @@ document.querySelectorAll('.nav-link').forEach((val) => {
       case 'g':
         mainContent.innerHTML = `<return-assets></return-assets>`;
         break;
-        break;
       case 'z':
         mainContent.innerHTML = /* html */`
           <div class="container-fluid">

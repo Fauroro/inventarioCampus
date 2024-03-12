@@ -1,7 +1,7 @@
 let selectOptions = [
     "assets", "brands", "personas",
-    "status", "person-phones", "assetMovTypes",
-    "asset-types", "assignedPeople"
+    "status", "person-phones",
+    "asset-types"
 ]
 
 function createOptions() {
