@@ -9,7 +9,6 @@ export class ReturnAssets extends HTMLElement {
   }
   render() {
     this.innerHTML =  /*html*/ `
-    
     <div class="card mt-3">
         <div class="card-header">Return assingment</div>
             <div class="card-body">
@@ -36,33 +35,7 @@ export class ReturnAssets extends HTMLElement {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="row">
-                <div class="col">
-                    <label for="brand" class="form-label">History Id </label>
-                    <input type="text" class="form-control brand" id="id" name="id" aria-describedby="" disabled>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="brand" class="form-label">Asset Id </label>
-                    <input type="text" class="form-control brand" id="asset" name="asset" aria-describedby="" disabled>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="brand" class="form-label">Date </label>
-                    <input type="text" class="form-control brand" id="date" name="date" aria-describedby="" disabled>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="brand" class="form-label">Person assigned</label>
-                    <input type="text" class="form-control brand" id="person" name="person" aria-describedby="" disabled>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="brand" class="form-label">Status</label>
-                    <input type="text" class="form-control brand" id="status" name="status" aria-describedby="" disabled>
-            </div>
-        </div>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -71,17 +44,66 @@ export class ReturnAssets extends HTMLElement {
       </div>
     </div>
         `;
-    const historyButton = document.querySelector('.historyButton')
-    historyButton.addEventListener('click', async ()=>{
-        debugger
-        let data = await getTasks(`assetHistory/${historyButton.id}`)
-        const frmRegistro = document.querySelectorAll('.form-control');
-        const inputs = Array.from(frmRegistro);
-        inputs.forEach(input => {
-            const value = input.id;
-            input.placeholder = data[value];
-        })
-    })
+    const historyButton = document.querySelector('.historyButton');
+    const modalBody = content.querySelector(".modal-body");
+    historyButton.addEventListener('click', async () => {
+      debugger
+      let dataAsset = await getTasks(`assets/${historyButton.id}`);
+      const dataBrand = await getTasks(`assets/${historyButton.id}?_embed=brand`);
+      const dataCategory = await getTasks(`assets/${historyButton.id}?_embed=category`);
+      const dataType = await getTasks(`assets/${historyButton.id}?_embed=asset-type`);
+      const dataSupplier = await getTasks(`assets/${historyButton.id}?_embed=supplier`);
+      modalBody.innerHTML = /* html */`
+        <div class="row">
+          <div class="col">
+            <label for="brand" class="form-label">Asset Id </label>
+            <input placeholder="${dataAsset.id}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="brand" class="form-label">Asset Id </label>
+            <input placeholder="${dataAsset.name}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="brand" class="form-label">Brand </label>
+            <input placeholder="${dataBrand.brand.name}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="brand" class="form-label">Category </label>
+            <input placeholder="${dataCategory.category.name}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="brand" class="form-label">Asset Type </label>
+            <input placeholder="${dataType['asset-type'].name}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="brand" class="form-label">Supplier</label>
+            <input placeholder="${dataSupplier.supplier.name}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="brand" class="form-label">Unit Value </label>
+            <input placeholder="${dataAsset.unitValue} $" type="text" class="form-control id" name="id" aria-describedby="" disabled>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="brand" class="form-label">Serial number </label>
+            <input placeholder="${dataAsset.serial}" type="text" class="form-control id" name="id" aria-describedby="" disabled>
+          </div>
+        </div>
+        `;
+    });
   }
 }
 customElements.define("return-assets", ReturnAssets)
