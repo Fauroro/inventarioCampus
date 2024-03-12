@@ -1,23 +1,22 @@
 import { postTasks, putTasks, delTasks, getTasks } from './../../api/apiFake.js'
-
-export function saveDataAssign(ruta, contenido, assignmentId) {
+export function saveDataAssign(ruta, contenido, personaId,assignmentId) {
   const frmRegistro = document.querySelector('#frmDataTask');
   document.querySelector('#btnGuardar').addEventListener("click", async (e) => {
     const datos = Object.fromEntries(new FormData(frmRegistro).entries());
     const selectElements = frmRegistro.querySelectorAll('select');
-    // let assetId = document.querySelector("#assetId").value;
-    let dataAsset; 
+    let dataAsset;
     dataAsset = await getTasks(`assets/${datos.assetId}`);
-    debugger
     if (dataAsset == undefined) {
       alert("No existe este activo")
       return
     }
+    const statusEmbed = await getTasks(`assets/${datos.assetId}?_embed=statu`);
     if (dataAsset.statuId !== "0") {
-      const statusEmbed = await getTasks(`assets/${datos.assetId}?_embed=statu`);
       const nameStatus = statusEmbed.statu.name;
       alert(`Activo se encuentra en estado: ${nameStatus}, no es posible asignarlo`)
       return
+    } else {
+      dataAsset.statuId = '1';
     }
     if (selectElements) {
       selectElements.forEach(select => {
@@ -31,13 +30,42 @@ export function saveDataAssign(ruta, contenido, assignmentId) {
       })
     }
     datos['assignmentId'] = assignmentId;
-    postTasks(datos, ruta);
+    const nuevoId = await postTasks(datos, ruta); 
+    putTasks(dataAsset, `assets/${datos.assetId}`);
+    alert(`Datos guardados correctamente.\n ID generado: ` + nuevoId);
     e.stopImmediatePropagation();
     e.preventDefault();
-    alert("Datos guardados correctamente")
+    let datosHistory = {};
+    datosHistory['id'] = nuevoId;
+    datosHistory['assetId'] = datos.assetId;
+    datosHistory['dateMov'] = datos.dateMov;
+    datosHistory['personaId'] = personaId;
+    datosHistory['statuId'] = dataAsset.statuId
+    console.log(datosHistory);
+    let history = {};
+    debugger
+    history[`${datos.assetId}`] = datosHistory;
+    console.log(history);
+    const nuevoId2 = await postTasks(history, `assetHistory`); 
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    alert(`Historial de movimiento guardado con ID generado: ` + nuevoId2);
     mainContent.innerHTML = `<${contenido}></${contenido}>`;
   })
 }
+
+
+// const content = document.querySelector('.formulario')
+//   for (let index = 0; index < 5; index++) {
+//     content.innerHTML += /* html */`
+//       <div class="row" style="height: 15px"></div>
+//       <div class="card-header" id="${index}" style="border: solid red;">New assignment</div>
+//       `
+//       const card = document.getElementById(`${index}`)
+//       card.textContent = index
+//   }
+
+
 
 // const checkPersonaId = async (id) => {
 //   let data = await getTasks(`personas/${id}`);
@@ -153,13 +181,14 @@ export function buscarAssign() {
 
         inputDate.value = currentDate;
         content.style.display = 'block';
+        const assignmentId = dataAssign.find(item => item.personaId === idValue).id;
 
         assetId.addEventListener('input', () => {
           if (assetId !== "") {
             btnGuardar.disabled = false;
           }
         })
-        saveDataAssign(`mov-details`, `assing-assets`, idValue)
+        saveDataAssign(`mov-details`, `assing-assets`, idValue, assignmentId)
       }
     }
     // }

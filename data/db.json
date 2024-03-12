@@ -68,7 +68,7 @@
       "supplierId": "900155107",
       "serial": "H7164NT44",
       "accountableId": "1",
-      "statuId": "0"
+      "statuId": "1"
     },
     {
       "id": "6",
@@ -12495,6 +12495,10 @@
     {
       "name": "prueba",
       "id": "4d2a"
+    },
+    {
+      "name": "prueba alexis1",
+      "id": "727a"
     }
   ],
   "personas": [
@@ -12522,7 +12526,18 @@
     }
   ],
   "assetMovTypes": [],
-  "assetHistory": [],
+  "assetHistory": [
+    {
+      "5": {
+        "id": "e656",
+        "assetId": "5",
+        "dateMov": "11/3/2024 19:54:30",
+        "personaId": "123456",
+        "statuId": "1"
+      },
+      "id": "d7e1"
+    }
+  ],
   "suppliers": [
     {
       "id": "900868271",
@@ -12734,34 +12749,11 @@
   "assignedPeople": [],
   "mov-details": [
     {
-      "id": "",
-      "dateMov": "",
-      "assetId": "",
-      "comment": "",
-      "assignmentId": ""
-    },
-    {
-      "id": "0fe4",
-      "assetId": "8f47",
-      "comment": "mensaje de prueba",
-      "dateMov": "11/3/2024 08:39:08",
-      "assignmentId": "123456"
-    },
-    {
-      "id": "50c1",
+      "id": "e656",
       "assetId": "5",
-      "comment": "prueba",
-      "dateMov": "11/3/2024 09:29:37",
-      "assignmentId": "123456"
-    }
-  ],
-  "mov": [
-    {
-      "id": "",
-      "dateMov": "",
-      "assetId": "",
-      "comment": "",
-      "assignmentId": ""
+      "comment": "dfh",
+      "dateMov": "11/3/2024 19:54:30",
+      "assignmentId": "f01b"
     }
   ]
 }
